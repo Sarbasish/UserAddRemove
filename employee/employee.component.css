@@ -1,0 +1,14 @@
+.myscroll {
+    position: relative;
+    overflow: auto;
+    height: 450px;
+}
+.alert {
+    max-width: 500px;
+}
+#addEmp{
+    white-space: normal !important;;
+}
+.container{
+    padding-bottom: 100px;
+}

@@ -1,0 +1,46 @@
+<app-header></app-header>
+<h3 align="center" style="margin-top: 40px; margin-bottom: 25px;">Employee Data</h3>
+<div class="container">
+    <div class="myscroll">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Subject</th>
+                    <th>Department</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tr *ngFor="let data of dataList ">
+                <td>{{data.id}}</td>
+                <td>{{data.name}}</td>
+                <td>{{data.subject}}</td>
+                <td>{{data.deptName}}</td>
+                <td>
+                    <button class="btn btn-primary" (click)="editData(data)" id="editButton">Edit</button>
+                    <button class="btn btn-primary"  (click)="deleteData(data)" (cancel)="handleCancel()">Delete</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="alert alert-success alert-dismissible" *ngIf="showDeleteMessage">
+        <strong>Success!</strong> Employee
+        <strong>{{empId}}</strong> deleted.
+    </div>
+    <div class="alert alert-success alert-dismissible" *ngIf="showEditMessage">
+        <strong>Success!</strong> Employee
+        <strong>{{empId}}</strong> updated.
+    </div>
+    <div class="alert alert-success alert-dismissible" *ngIf="showAddMessage">
+        <strong>Success!</strong> Employee
+        <strong>{{empId}}</strong> added.
+    </div>
+    <button id="addEmp" class="btn btn-primary .btn-md" (click)="addData()" id="addButton" style="position: absolute; top:100px; ">Add New Employee</button>
+    <div class="progress-loader" [hidden]="!showSpinner" style="position: absolute; top:40px; left:50%;" >
+        <mat-progress-spinner [mode]="'indeterminate'">
+        </mat-progress-spinner>
+    </div>
+</div>
+
+<app-footer></app-footer>

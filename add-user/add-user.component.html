@@ -1,0 +1,38 @@
+<div class="modal-header" >
+    <div *ngIf="addFlag">
+        <h4 class="modal-title">Add Employee Data</h4>
+    </div>
+    <div *ngIf="addFlag == false"><h4 class="modal-title">Update Employee Data</h4></div>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+      <form [formGroup]="addEmpForm" >
+
+          <div class="form-group" *ngIf="addFlag">
+              <label for="e_id">ID</label>
+              <input type="text" formControlName="e_id"  class="form-control"/>
+          </div>
+          <div class="form-group">
+              <label for="e_name">Name</label>
+              <input type="text" formControlName="e_name" class="form-control"/>
+          </div>
+          <div class="form-group">
+              <label for="e_subject">Subject</label>
+              <input type="text" formControlName="e_subject" class="form-control"/>
+          </div>
+          <div class="form-group" *ngIf="addFlag" >
+              <label for="e_department">Department</label>
+              <select [(ngModel)]="selectedDept" formControlName="e_department">
+                  <option *ngFor="let dept of departmentsList"  [ngValue]="dept.Id" >{{dept.Name}}</option>
+              </select>
+          </div>         
+          <div *ngIf="addFlag"><button (click)="addUser(addEmpForm.value)" class="btn btn-primary">Add</button> </div>
+          <div *ngIf="addFlag == false"><button  (click)="addUser(addEmpForm.value)" class="btn btn-primary">Update</button> </div>
+      </form>
+  </div>
+ 
+  <div class="modal-footer"> 
+    <button type="button" class="btn btn-primary" (click)="closemodal(false)">Close</button>
+  </div> 

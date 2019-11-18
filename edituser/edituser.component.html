@@ -1,0 +1,32 @@
+<div class="modal-header" >
+    <h4 class="modal-title">Edit Employee Data</h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+      <form [formGroup]="editForm" (ngSubmit)="updateUser(editForm.value)">
+
+          <div class="form-group" hidden>
+              <label for="id">ID</label>
+              <input type="text" formControlName="id"  readonly class="form-control"/>
+          </div>
+          <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" formControlName="name" class="form-control"/>
+          </div>
+          <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" formControlName="subject" class="form-control"/>
+          </div>
+          <div class="form-group" hidden>
+              <label for="department">Department</label>
+              <input type="text" formControlName="department" class="form-control"/>
+          </div>
+          <button type="submit" class="btn btn-primary">Update</button>
+          
+      </form>
+  </div>
+  <div class="modal-footer"> 
+    <button type="button" class="btn btn-primary" (click)="closemodal(false)">Close</button>
+  </div> 
